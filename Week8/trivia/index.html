@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+        <link href="styles.css" rel="stylesheet">
+        <title>Trivia!</title>
+    </head>
+    <body>
+        <div class="header">
+            <h1>Trivia!</h1>
+        </div>
+
+        <div class="container">
+            <div class="section">
+                <h2>Part 1: Multiple Choice </h2>
+                <hr>
+                <h3>1 + 1 = ?</h3>
+                <button id="btn1">1</button>
+                <button id="btn2">2</button>
+                <button id="btn3">3</button>
+                <p id="feedback1"></p>
+
+                <h3>What color is Stitch?</h3>
+                <button id="blue">Blue</button>
+                <button id="red">Red</button>
+                <button id="green">Green</button>
+                <p id="feedback2"></p>
+            </div>
+
+            <div class="section">
+                <h2>Part 2: Free Response</h2>
+                <hr>
+                <h3>What color is Stitch?</h3>
+                <input type="text" id="answerInput" placeholder="Enter your answer">
+                <button id="submitAnswer">Submit</button>
+                <p id="feedback3"></p>
+            </div>
+        </div>
+        <script>
+                document.getElementById('btn1').addEventListener('click', function() {
+                document.getElementById('feedback1').textContent = 'Incorrect! Try again.';
+                document.getElementById('feedback1').style.color = 'red';
+            });
+
+            document.getElementById('btn2').addEventListener('click', function() {
+                document.getElementById('feedback1').textContent = 'Correct! 1 + 1 = 2';
+                document.getElementById('feedback1').style.color = 'green';
+            });
+
+            document.getElementById('btn3').addEventListener('click', function() {
+                document.getElementById('feedback1').textContent = 'Incorrect! Try again.';
+                document.getElementById('feedback1').style.color = 'red';
+            });
+
+            document.getElementById('blue').addEventListener('click', function() {
+                document.getElementById('feedback2').textContent = 'Correct! Stitch is Blue';
+                document.getElementById('feedback2').style.color = 'green';
+            });
+
+            document.getElementById('red').addEventListener('click', function() {
+                document.getElementById('feedback2').textContent = 'Incorrect! Try again.';
+                document.getElementById('feedback2').style.color = 'red';
+            });
+
+            document.getElementById('green').addEventListener('click', function() {
+                document.getElementById('feedback2').textContent = 'Incorrect! Try again.';
+                document.getElementById('feedback2').style.color = 'red';
+            });
+
+            // Free response question
+            document.getElementById('submitAnswer').addEventListener('click', function() {
+                const answer = document.getElementById('answerInput').value.toLowerCase();
+                if (answer === 'blue') {
+                    document.getElementById('feedback3').textContent = 'Correct! Stitch is Blue.';
+                    document.getElementById('feedback3').style.color = 'green';
+                } else {
+                    document.getElementById('feedback3').textContent = 'Incorrect! Try again.';
+                    document.getElementById('feedback3').style.color = 'red';
+                }
+            });
+        </script>
+    </body>
+</html>
