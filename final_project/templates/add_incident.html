@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>新增生氣事件</h2>
+<form method="post">
+    <div>
+        <label for="date">日期:</label>
+        <input type="date" id="date" name="date" value="{{ today }}" required>
+    </div>
+    <div>
+        <label for="title">事件標題:</label>
+        <input type="text" id="title" name="title" required>
+    </div>
+    <div>
+        <label for="description">詳細描述:</label>
+        <textarea id="description" name="description" rows="4"></textarea>
+    </div>
+    <div>
+        <label for="severity">嚴重程度 (1-5星):</label>
+        <select id="severity" name="severity" required>
+            <option value="1">1星 (輕微)</option>
+            <option value="2">2星</option>
+            <option value="3" selected>3星 (中等)</option>
+            <option value="4">4星</option>
+            <option value="5">5星 (嚴重)</option>
+        </select>
+    </div>
+    <div>
+        <label for="tags">標籤 (用逗號分隔):</label>
+        <input type="text" id="tags" name="tags" placeholder="例如: 禮物,溝通,朋友">
+    </div>
+    <button type="submit">儲存記錄</button>
+</form>
+{% endblock %}

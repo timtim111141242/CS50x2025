@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>數據庫調試信息</h2>
+
+<div class="stats-section">
+    <h3>數據庫中的表</h3>
+    <ul>
+        {% for table in tables %}
+        <li>{{ table['name'] }}</li>
+        {% endfor %}
+    </ul>
+</div>
+
+{% if incidents %}
+<div class="stats-section">
+    <h3>incidents 表中的數據</h3>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>日期</th>
+                <th>標題</th>
+                <th>描述</th>
+                <th>嚴重程度</th>
+                <th>標籤</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for incident in incidents %}
+            <tr>
+                <td>{{ incident['id'] }}</td>
+                <td>{{ incident['date'] }}</td>
+                <td>{{ incident['title'] }}</td>
+                <td>{{ incident['description'] }}</td>
+                <td>{{ incident['severity'] }}</td>
+                <td>{{ incident['tags'] }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% else %}
+<div class="stats-section">
+    <p>incidents 表中沒有數據或表不存在。</p>
+</div>
+{% endif %}
+{% endblock %}

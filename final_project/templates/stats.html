@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>統計分析</h2>
+
+<div class="stats-section">
+    <h3>總覽</h3>
+    <p>總共記錄了 <strong>{{ total_incidents }}</strong> 次生氣事件。</p>
+</div>
+
+<div class="stats-section">
+    <h3>嚴重程度分佈</h3>
+    <ul>
+        {% for level in range(1, 6) %}
+        <li>{{ level }}星: {{ severity_count.get(level, 0) }} 次</li>
+        {% endfor %}
+    </ul>
+</div>
+
+<div class="stats-section">
+    <h3>標籤統計</h3>
+    {% if tag_count %}
+        <ul>
+            {% for tag, count in tag_count.items() %}
+            <li>{{ tag }}: {{ count }} 次</li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>還沒有添加任何標籤。</p>
+    {% endif %}
+</div>
+{% endblock %}

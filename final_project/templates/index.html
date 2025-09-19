@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>生氣記錄</h2>
+{% if incidents %}
+    <table>
+        <thead>
+            <tr>
+                <th>日期</th>
+                <th>事件</th>
+                <th>嚴重程度</th>
+                <th>標籤</th>
+                <th>操作</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for incident in incidents %}
+            <tr>
+                <td>{{ incident['date'] }}</td>
+                <td>
+                    <strong>{{ incident['title'] }}</strong>
+                    {% if incident['description'] %}
+                    <br><small>{{ incident['description'] }}</small>
+                    {% endif %}
+                </td>
+                <td>
+                    {% for i in range(incident['severity']) %}⭐{% endfor %}
+                </td>
+                <td>{{ incident['tags'] }}</td>
+                <td>
+                    <a href="{{ url_for('delete_incident', id=incident['id']) }}"
+                       onclick="return confirm('確定要刪除這條記錄嗎？')">刪除</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% else %}
+    <p>還沒有任何記錄，<a href="{{ url_for('add_incident') }}">新增第一筆記錄</a>。</p>
+{% endif %}
+{% endblock %}
